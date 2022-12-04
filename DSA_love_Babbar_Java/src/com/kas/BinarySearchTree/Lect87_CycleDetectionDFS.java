@@ -12,9 +12,10 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.Stack;
 import java.util.TreeMap;
-//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
-public class Lect87_DetectCycleBfs {
+
+class Lect87_CycleDetectionDFS {
 	// we are using set instead of list bcoz we need ordered neighbour
 	static Map<Integer, Set<Integer>> adjList = new TreeMap<Integer, Set<Integer>>();
 
@@ -34,18 +35,21 @@ public class Lect87_DetectCycleBfs {
 		}
 	}
 	static ArrayList<Integer> ans = new ArrayList<>();
-	static void bfsTravCycle(int nVertices){
-		Queue<Integer> q = new LinkedList<Integer>();
-		Map<Integer,Boolean> visited = new HashMap<Integer,Boolean>();
+	static void dfsTrav(int nVertices){
 		Map<Integer,Integer> parent = new HashMap<Integer,Integer>();
+		Stack<Integer> q = new Stack<Integer>();
+		Map<Integer,Boolean> visited = new HashMap<Integer,Boolean>();
 		
-		for(int nodes=0;nodes<=nVertices;nodes++){
+		for(int nodes=0;nodes<nVertices;nodes++){
 			if(visited.get(nodes) ==null)
 				q.add(nodes);
-		//add parent for first node i.e 0 = -1 parent of 0 is -1
-		if(nodes ==0)parent.put(nodes, -1);
-		while(!q.isEmpty()){
-			int fnode = q.poll();
+			//modif for cycle detection
+			if(nodes == 0){
+				parent.put(nodes,-1);
+			}
+		
+		while(q.size() != 0){
+			int fnode = q.pop();
 			//not added in map means not visited
 			if(visited.get(fnode) == null){
 				//add into visited
@@ -58,15 +62,15 @@ public class Lect87_DetectCycleBfs {
 				//below if to check if vertices has no neghbour
 				if(adjList.get(fnode) != null){
 					for(int nbr:adjList.get(fnode)){
-						if(visited.get(nbr) == null){
+						if(visited.get(nbr) == null)//check if not visited
+						{
 						q.add(nbr);
-						//modification on bfs
-						parent.put(nbr,fnode);
+								//	node,parent
+						parent.put(nbr, fnode);
 						}
-						//modification bfs
 						if(visited.get(nbr) != null && parent.get(fnode) != nbr)
 						{
-							System.out.println("cycle detected");
+							System.out.println("cyclec detected");
 							return;
 						}
 					}
@@ -103,54 +107,33 @@ public class Lect87_DetectCycleBfs {
 			System.out.println(key +" -> "+adjList.get(key));
 		}*/
 		
-		//Bfs traversal
+		//Dfs traversal
 		//adjlist
 		//int src = sc.nextInt();
 		
 		//n is no.of vertex
-		bfsTravCycle(n);
+		dfsTrav(n);
 		
-		System.out.println("BFS Trav: "+ans);
+		System.out.println("DFS Trav: "+ans);
 	}
 
-	
+	/*
+	5
+	6
+	0 1
+	1 2
+	2 3
+	3 4
+	4 1
+	3 5
+
+	cycle detected
+	cycle detected
+	BFS Trav: [0, 1, 2, 4, 3]
+	dfs:
+	cyclec detected
+	DFS Trav: [0, 1, 4, 3, 5, 2]
+
+	*/
+
 }
-/*
-5
-6
-0 1
-1 2
-2 3
-3 4
-4 1
-3 5
-
-cycle detected
-cycle detected
-BFS Trav: [0, 1, 2, 4, 3]
-dfs:
-cyclec detected
-DFS Trav: [0, 1, 4, 3, 5, 2]
-
-*/
-/*
-3
-2
-0 1
-1 2
-*/
-/*
- 9
- 8
- 1 2
- 2 3
- 4 5
- 5 6
- 5 7
- 6 8 
- 7 8
- 8 9
- 
- */
-
-
