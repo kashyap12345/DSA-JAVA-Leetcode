@@ -6,7 +6,8 @@ import java.util.List;
 
 public class Day119__4_LongesIncreasinSubSeqDpBinrySrcSopt {
 	// pos //0, 1,2,3,4
-	static int[] ip = new int[] { 5, 8, 3, 7, 9, 1 }; //
+	//static int[] ip = new int[] { 1, 7, 9, 1 }; //
+	static int[] ip = new int[] { 10,9,2,5,3,7,101,18};
 	static int n = ip.length;
 	static int[][] dp = new int[n + 1][n + 1];
 
@@ -26,6 +27,7 @@ public class Day119__4_LongesIncreasinSubSeqDpBinrySrcSopt {
 			
 			}
 		}
+		System.out.println(ans);
 		return ans.size();
 	}
 	//finding the index of greatest smaller element 
@@ -33,7 +35,7 @@ public class Day119__4_LongesIncreasinSubSeqDpBinrySrcSopt {
         int start = 0;
         int end = list.size()-1;
         while(start<end){
-            int mid = start + (end-start)/2;
+            int mid = start + (end)/2;//3/2 =1
             if(list.get(mid) < search){
                 start = mid+1;
             } else{
@@ -50,7 +52,7 @@ public class Day119__4_LongesIncreasinSubSeqDpBinrySrcSopt {
 		}
 
 		System.out.println(countDearr());
-		// System.out.println(op);
+		 
 	}
 }
 // 0 1 1 2 3 5 8

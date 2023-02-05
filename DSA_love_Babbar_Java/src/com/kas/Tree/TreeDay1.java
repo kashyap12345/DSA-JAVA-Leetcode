@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class TreeDay1 {
 	
-	// 1. builde tree
+	// 1. b uilde tree
 	static TreeNode buildTree(TreeNode root){
 		
 		Scanner sc = new Scanner(System.in);
@@ -39,9 +39,9 @@ public class TreeDay1 {
 			q.poll();
 			System.out.print(" "+temp.val);
 			if(temp.left != null)
-			q.add(temp.left);
+				q.add(temp.left);
 			if(temp.right != null)
-			q.add(temp.right);
+				q.add(temp.right);
 		}
 	}
 	//3. pre order

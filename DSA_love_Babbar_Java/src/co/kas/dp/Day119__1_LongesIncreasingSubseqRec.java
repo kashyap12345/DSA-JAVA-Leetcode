@@ -6,7 +6,8 @@ import java.util.List;
 
 public class Day119__1_LongesIncreasingSubseqRec {
 	// pos //0, 1,2,3,4
-	static int[] ip = new int[] { 5,8,3,7,9,1}; //
+	//static int[] ip = new int[] { 5,8,3,7,9,1}; //
+	static int[] ip = new int[] { 10,9,2,5,3,7,101,18};
 	
 	static int n = ip.length;
 	static List<Integer> op= new ArrayList<Integer>();
@@ -16,13 +17,15 @@ public class Day119__1_LongesIncreasingSubseqRec {
 		if(curr >= n-1) return 0;
 		
 		int inc =0,exc=0;
-
+		
 		if(prev == -1 || ip[curr] > ip[prev])
 		{op.add(ip[curr]);
 		inc = 1 + countDearr(curr + 1, curr);
 		}
-		else
+		
 		exc = 0 + countDearr(curr+1, prev);
+		
+		
 
 		return Math.max(inc, exc);
 	}
