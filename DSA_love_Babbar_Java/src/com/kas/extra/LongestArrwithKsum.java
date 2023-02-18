@@ -1,5 +1,5 @@
 package com.kas.extra;
-public class Solution {
+public class LongestArrwithKsum {
 
   public static void main(String[] args) {
     int[] arr = {7,1,6,0};
