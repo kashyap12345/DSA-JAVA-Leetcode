@@ -2,9 +2,9 @@ package co.kas.dp;
 
 public class Day104_3_CoinChngTab {
 static int ans;
-static int amount = 7;
+static int amount = 11;
 static int n =3;
-static int[] coins = new int[]{1,2,3};
+static int[] coins = new int[]{1,2,5};
 static int[] dp = new int[amount+1];
 	public static int coinMin(int amount){
 		//base case

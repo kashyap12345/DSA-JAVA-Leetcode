@@ -2,8 +2,8 @@ package co.kas.dp;
 
 public class Day105_4_MaxSumNonAdjNodetabSpcOptVar {
 
-static int n =5;
-static int[] ip = new int[]{2,7,9,3,1};
+static int n =4;
+static int[] ip = new int[]{1,2,3,1};
 		//{ 1, 2, 9, 4, 5, 0, 4, 11, 6 };
 		//{9,9,8,2};
 static int[] dp = new int[n+1];
